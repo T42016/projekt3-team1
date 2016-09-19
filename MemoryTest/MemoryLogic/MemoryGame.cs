@@ -9,8 +9,20 @@ namespace MemoryLogic
 {
     public class MemoryGame
     {
+        enum Gamestate
+        {
+            Running,
+            Won
+        }
+
+        private static char[] symbols = { '*', '!', 'w', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o' };
+        Gamestate state;
+        public int posX { get; private set; }
+        public int posY { get; private set; }
+        private bool check = false;
         public int SizeX { get; }
         public int SizeY { get; }
+        public int Moves { get; private set; }
         public int Draws { get; private set; }
         public bool HasMismatch => lastOpened.Count == 2;
          
@@ -85,6 +97,68 @@ namespace MemoryLogic
                 if(lastOpened.Count == 2)
                     Draws++;
             }
+        }
+
+        public void Update(ConsoleKey key)
+        {
+            if (HasMismatch)
+            {
+                CloseMismatch();
+
+            }
+            if (key == ConsoleKey.LeftArrow && posX > 0)
+                posX--;
+            if (key == ConsoleKey.RightArrow && posX < SizeX - 1)
+                posX++;
+            if (key == ConsoleKey.UpArrow && posY > 0)
+                posY--;
+            if (key == ConsoleKey.DownArrow && posY < SizeY - 1)
+                posY++;
+            if (key == ConsoleKey.R)
+                ResetBoard();
+        }
+
+        public void DrawBoard()
+        {
+            Console.Clear();
+
+
+            for (int y = 0; y < SizeY; y++)
+            {
+                for (int x = 0; x < SizeX; x++)
+                {
+                    if (x == posX && y == posY)
+                        Console.BackgroundColor = ConsoleColor.DarkCyan;
+                    else
+                        Console.BackgroundColor = ConsoleColor.Black;
+
+                    var info = GetCoordinate(x, y);
+                    if (info.IsOpen)
+                    {
+                        Console.ForegroundColor = info.IsFound ? ConsoleColor.Green : ConsoleColor.Cyan;
+                        Console.Write(symbols[info.Value] + " ");
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                        Console.Write(". ");
+                    }
+                }
+                Console.WriteLine();
+            }
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.WriteLine("Moves: " + Moves);
+            if (HasMismatch)
+                Console.WriteLine("Press any key");
+        }
+
+
+        private void GameWon()
+        {
+            Console.WriteLine("You won");
+            Console.ReadLine();
+            ResetBoard();
         }
     }
 }
