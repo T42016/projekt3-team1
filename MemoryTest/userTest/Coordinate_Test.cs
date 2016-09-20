@@ -58,6 +58,6 @@ namespace userTest
             var coord = _underTest.GetCoordinate(0, 3);
             //Assert 
             Assert.AreEqual(coord.Y, 3);
-        }
+        } 
     }
 }

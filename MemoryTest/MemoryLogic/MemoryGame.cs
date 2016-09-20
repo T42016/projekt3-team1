@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MineSweeperLogic;
 
 namespace MemoryLogic
 {
@@ -13,7 +14,8 @@ namespace MemoryLogic
         public int SizeY { get; }
         public int Draws { get; private set; }
         public bool HasMismatch => lastOpened.Count == 2;
-         
+        public GameState State { get; private set; }
+
         public MemoryGame(int sizeX, int sizeY)
         {
             SizeX = sizeX;
