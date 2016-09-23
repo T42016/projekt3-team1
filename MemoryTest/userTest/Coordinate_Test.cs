@@ -39,7 +39,6 @@ namespace userTest
         {
             //Arrange & Act
             var game = new MemoryGame(4, 4);
-
             //Assert
             Assert.AreEqual(game.SizeY, 4);
         }
