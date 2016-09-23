@@ -24,16 +24,19 @@ namespace userTest
             //Assert
             Assert.AreEqual(game.State, GameState.Playing);
         }
+
         [TestMethod]
-        public void MoveCursorDownShouldNotMoveOutsideBoard()
+        public void ConstructorShouldCountNroFMoes()
         {
-            //Arrange via Setup
+            //Arange
+            MemoryGame game = new MemoryGame(5, 5);
+
             //Act
-            _underTest.();
-            _underTest.MoveCursorDown();
-            _underTest.MoveCursorDown();
+            game.ClickCoordinate(0, 0);
+            game.ClickCoordinate(1, 0);
+
             //Assert
-            Assert.AreEqual(2, _underTest.PosY);
+            Assert.AreEqual(game.Draws, 1);
         }
 
 

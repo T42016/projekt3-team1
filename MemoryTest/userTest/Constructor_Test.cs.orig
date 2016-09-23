@@ -1,5 +1,8 @@
 ﻿using System;
+<<<<<<< HEAD
 using System.Security.Cryptography.X509Certificates;
+=======
+>>>>>>> origin/feature_boardgame
 using MemoryLogic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MineSweeperLogic;
@@ -9,12 +12,15 @@ namespace userTest
     [TestClass]
     public class Constructor_Test
     {
+<<<<<<< HEAD
         private MemoryGame _underTest;
         [TestInitialize]
         public void Setup()
         {
             _underTest = new MemoryGame(4, 4);
         }
+=======
+>>>>>>> origin/feature_boardgame
         [TestMethod]
         public void ConstrutorShouldSetGamestateToPlayingAtStart()
         {
@@ -24,6 +30,7 @@ namespace userTest
             //Assert
             Assert.AreEqual(game.State, GameState.Playing);
         }
+<<<<<<< HEAD
         [TestMethod]
         public void MoveCursorDownShouldNotMoveOutsideBoard()
         {
@@ -39,3 +46,7 @@ namespace userTest
 
     }
 }
+=======
+    }
+}
+>>>>>>> origin/feature_boardgame

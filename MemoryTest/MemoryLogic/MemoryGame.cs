@@ -109,8 +109,6 @@ namespace MemoryLogic
                 CloseMismatch();
 
             }
-            
-            public void left()
             if (key == ConsoleKey.LeftArrow && posX > 0)
                 posX--;
             if (key == ConsoleKey.RightArrow && posX < SizeX - 1)
