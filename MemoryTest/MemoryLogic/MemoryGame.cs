@@ -3,6 +3,7 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace MemoryLogic
@@ -106,6 +107,8 @@ namespace MemoryLogic
                 CloseMismatch();
 
             }
+            
+            public void left()
             if (key == ConsoleKey.LeftArrow && posX > 0)
                 posX--;
             if (key == ConsoleKey.RightArrow && posX < SizeX - 1)
