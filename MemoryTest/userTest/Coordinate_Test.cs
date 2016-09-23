@@ -12,8 +12,9 @@ namespace userTest
         [TestInitialize]
         public void Setup()
         {
-            _underTest = new MemoryGame(4,4);
+            _underTest = new MemoryGame(4, 4);
         }
+
         [TestMethod]
         public void BoardGameShouldSetCorrectSize()
         {
@@ -25,6 +26,7 @@ namespace userTest
             Assert.AreEqual(game.SizeY, 4);
 
         }
+
         [TestMethod]
         public void BoardGameShouldGetX()
         {
@@ -34,6 +36,7 @@ namespace userTest
             //Assert
             Assert.AreEqual(game.SizeX, 4);
         }
+
         [TestMethod]
         public void BoardGameShouldGetY()
         {
@@ -42,6 +45,7 @@ namespace userTest
             //Assert
             Assert.AreEqual(game.SizeY, 4);
         }
+
         [TestMethod]
         public void BoardGameShouldGetCorrectPositionX()
         {
@@ -49,6 +53,7 @@ namespace userTest
             //Assert 
             Assert.AreEqual(coord.X, 2);
         }
+
         [TestMethod]
         public void BoardGameShouldGetCorrectPositionY()
         {
@@ -57,6 +62,27 @@ namespace userTest
             var coord = _underTest.GetCoordinate(0, 3);
             //Assert 
             Assert.AreEqual(coord.Y, 3);
+        }
+
+        [TestMethod]
+        public void GetCoordinateShouldReturnValidCoord()
+        {
+            //Arrange via setup
+            //Act
+            var coord = _underTest.GetCoordinate(0, 0);
+            //Assert 
+            Assert.IsInstanceOfType(coord, typeof(PositionInfo));
+        }
+
+        [TestMethod]
+        public void GetCoordinateShouldReturnPositionInfoWithCorrectXForValidCoordinate()
+        {
+            //Arrange via setup
+            //Act
+            var coord = _underTest.GetCoordinate(1, 0);
+            //Assert 
+            Assert.AreEqual(coord.X, 1);
+
         }
     }
 }
